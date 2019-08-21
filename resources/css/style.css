@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom right, #67b26f, #4ca2cd);
+    color: #1d1d1d;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 70px;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    width: 40%;
+}
+
+.main div {
+    text-align: center;
+}
+
+.date {
+
+}
+
+.time {
+}
+
+.date-input {
+    border-radius: 6px;
+    height:40px;
+    width: 150px;
+    font-size: 15px;
+}
+
+.start button{
+    font-size: 42px;
+    font-weight: 600;
+    padding: 3px 55px;
+    background-color: #5CA564;
+    border: none;
+    color: #fff;
+}
