@@ -9,7 +9,6 @@ body {
     color: #1d1d1d;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    font-size: 70px;
     text-rendering: optimizeLegibility;
 }
 
@@ -20,25 +19,41 @@ body {
     justify-content: center;
 }
 
-.main {
-    width: 40%;
+.inputs div {
+    text-align: left;
+    display: inline-block;
 }
 
-.main div {
+.main {
+    width: 40%;
     text-align: center;
 }
 
 .date {
+    margin-top: 30px;
+}
 
+.start,.time {
+    margin-top:70px;
 }
 
 .time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 50px;
 }
 
-.date-input {
+.time div {
+    width:20%;
+}
+
+.time p{
+    font-size: 60%;
+}
+
+.date-input,.event-input,.time-input {
     border-radius: 6px;
     height:40px;
-    width: 150px;
     font-size: 15px;
 }
 
@@ -49,4 +64,10 @@ body {
     background-color: #5CA564;
     border: none;
     color: #fff;
+}
+
+@media (max-width: 940px) {
+    .main {
+        width:80%;
+    }
 }

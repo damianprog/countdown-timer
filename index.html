@@ -8,17 +8,58 @@
 <body>
 <div class="container">
     <div class="main">
-        <div class="date">
-            <input type="date"
-                   class="date-input"
-                   name="event-date">
+        <div class="inputs">
+            <div>
+                <label>Event Name</label><br>
+                <input
+                        type="text"
+                        class="event-input"
+                >
+            </div>
+            <div>
+                <label>Event Date</label><br>
+                <input type="date"
+                       class="date-input"
+                >
+            </div>
+            <div>
+                <label>Hours</label><br>
+                <input
+                        type="time"
+                        step="1"
+                        class="time-input"
+                >
+            </div>
         </div>
         <div class="time">
-            <span class="days">0000</span>:<span class="hours">00</span>:<span class="minutes">00</span>:<span
-                class="seconds">00</span>
+            <div>
+                <span class="days">0</span>
+                <p>Days</p>
+            </div>
+            <span>
+                :
+            </span>
+            <div>
+                <span class="hours">0</span>
+                <p>Hours</p>
+            </div>
+            <span>
+                :
+            </span>
+            <div>
+                <span class="minutes">0</span>
+                <p>Minutes</p>
+            </div>
+            <span>
+                :
+            </span>
+            <div>
+                <span class="seconds">0</span>
+                <p>Seconds</p>
+            </div>
         </div>
         <div class="start">
-            <button>Start</button>
+            <button onclick="startCountdown()">Start</button>
         </div>
     </div>
 </div>
