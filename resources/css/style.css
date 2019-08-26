@@ -66,6 +66,10 @@ body {
     color: #fff;
 }
 
+.event-info {
+    display: none;
+}
+
 @media (max-width: 940px) {
     .main {
         width:80%;
