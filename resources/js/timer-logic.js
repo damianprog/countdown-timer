@@ -1,39 +1,71 @@
 const inputs = document.querySelector(".inputs");
 const eventInfo = document.querySelector(".event-info");
-const startButton = document.querySelector(".start-button");
+const countdownButton = document.querySelector(".countdown-button");
+const eventInput = document.querySelector(".event-input");
+let intervalId = "";
 
-function startCountdown() {
-    const dateInput = document.querySelector(".date-input").value;
-    const timeInput = document.querySelector(".time-input").value;
+const dateInput = document.querySelector(".date-input");
+dateInput.setAttribute("min",new Date().toISOString().slice(0, 10));
 
-    if (dateInput) {
-        let userDate = new Date(dateInput);
-
-        const hoursMinutesSeconds = timeInput !== "" ? timeInput.split(":") : ["0", "0", "0"];
-        userDate.setHours(
-            parseInt(hoursMinutesSeconds[0]),
-            parseInt(hoursMinutesSeconds[1]),
-            hoursMinutesSeconds[2] ? parseInt(hoursMinutesSeconds[2]) : 0
-        );
-
-        showEventLabels();
-
-        window.setInterval(() => {
-            setTime(getTimeDifference(userDate));
-        }, 1000);
+function countdown() {
+    if (countdownButton.innerHTML === "Start" && inputsValidation()) {
+        startCountdown();
+    } else if (countdownButton.innerHTML === "Stop") {
+        stopCountdown();
     }
 }
 
-function showEventLabels() {
-    const eventInput = document.querySelector(".event-input").value;
+function inputsValidation() {
+    if (!dateInput.value) {
 
+    }
+
+    return true;
+}
+
+function startCountdown() {
+    const timeInput = document.querySelector(".time-input").value;
+
+    let userDate = new Date(dateInput.value);
+
+    const hoursMinutesSeconds = timeInput !== "" ? timeInput.split(":") : ["0", "0", "0"];
+    userDate.setHours(
+        parseInt(hoursMinutesSeconds[0]),
+        parseInt(hoursMinutesSeconds[1]),
+        hoursMinutesSeconds[2] ? parseInt(hoursMinutesSeconds[2]) : 0
+    );
+
+    showCountdownLabels();
+
+    intervalId = window.setInterval(() => {
+        setTime(getTimeDifference(userDate));
+    }, 1000);
+}
+
+function stopCountdown() {
+    inputs.style.display = "block";
+
+    eventInfo.style.display = "none";
+
+    countdownButton.style.backgroundColor = "#5CA564";
+    countdownButton.innerHTML = "Start";
+
+    window.clearInterval(intervalId);
+
+    document.querySelector(".days").innerHTML = "0";
+    document.querySelector(".hours").innerHTML = "0";
+    document.querySelector(".minutes").innerHTML = "0";
+    document.querySelector(".seconds").innerHTML = "0";
+}
+
+function showCountdownLabels() {
     inputs.style.display = "none";
 
     eventInfo.style.display = "block";
-    eventInfo.innerHTML = `<h1>${eventInput}</h1>`;
+    eventInfo.innerHTML = `<h1>${eventInput.value}</h1>`;
 
-    startButton.style.backgroundColor = "#8b1616";
-    startButton.innerHTML = "Stop";
+    countdownButton.style.backgroundColor = "#8b1616";
+    countdownButton.innerHTML = "Stop";
 }
 
 function getTimeDifference(userDate) {
@@ -53,4 +85,8 @@ function setTime(timeDiff) {
     document.querySelector(".hours").innerHTML = hours.toString();
     document.querySelector(".minutes").innerHTML = minutes.toString();
     document.querySelector(".seconds").innerHTML = seconds.toString();
+
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+        stopCountdown();
+    }
 }
