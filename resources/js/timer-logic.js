@@ -16,11 +16,13 @@ function countdown() {
 }
 
 function inputsValidation() {
-    if (!dateInput.value) {
-
+    if (!eventInput.value || eventInput.value.trim() === "") {
+        alert("Provide event name.");
+    } else if (!dateInput.value) {
+        alert("Wrong event date input.");
     }
 
-    return true;
+    return eventInput.value && eventInput.value.trim() !== "" && dateInput.value;
 }
 
 function startCountdown() {
@@ -69,10 +71,10 @@ function showCountdownLabels() {
 }
 
 function getTimeDifference(userDate) {
-    let date1 = new Date().getTime();
-    let date2 = userDate.getTime();
+    let date1 = userDate.getTime();
+    let date2 = new Date().getTime();
 
-    return Math.abs(date1 - date2);
+    return (date1 - date2) > 0 ? (date1 - date2) : 0;
 }
 
 function setTime(timeDiff) {

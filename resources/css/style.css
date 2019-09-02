@@ -25,7 +25,6 @@ body {
 }
 
 .main {
-    width: 40%;
     text-align: center;
 }
 
@@ -39,16 +38,16 @@ body {
 
 .time {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     font-size: 50px;
 }
 
 .time div {
-    width:20%;
+    padding: 0 40px;
 }
 
 .time p{
-    font-size: 60%;
+    font-size: 45%;
 }
 
 .date-input,.event-input,.time-input {
